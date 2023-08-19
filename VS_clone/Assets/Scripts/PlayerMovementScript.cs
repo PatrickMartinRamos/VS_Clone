@@ -25,6 +25,12 @@ public class PlayerMovementScript : MonoBehaviour
     public void FixedUpdate()
     {
         rb.velocity = moveVector * moveSpeed;
+
+        // Flip the character based on movement direction
+        if (moveVector.x > 0)
+            transform.localScale = new Vector3(1, 1, 1); // Facing right
+        else if (moveVector.x < 0)
+            transform.localScale = new Vector3(-1, 1, 1); // Facing left
     }
 
     private void OnEnable()
