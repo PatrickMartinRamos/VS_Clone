@@ -35,6 +35,15 @@ public partial class @Player_input: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""attack"",
+                    ""type"": ""Value"",
+                    ""id"": ""256b774c-17d9-4eca-a4ac-a71a41e0e005"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -158,6 +167,28 @@ public partial class @Player_input: IInputActionCollection2, IDisposable
                     ""action"": ""movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d61dd16d-18bb-4108-83c2-5b4b4624ad95"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3f10ccc0-fc39-43bf-a701-db902c16d7d2"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -195,6 +226,7 @@ public partial class @Player_input: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_movement = m_Player.FindAction("movement", throwIfNotFound: true);
+        m_Player_attack = m_Player.FindAction("attack", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_UItouch = m_UI.FindAction("UItouch", throwIfNotFound: true);
@@ -260,11 +292,13 @@ public partial class @Player_input: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_movement;
+    private readonly InputAction m_Player_attack;
     public struct PlayerActions
     {
         private @Player_input m_Wrapper;
         public PlayerActions(@Player_input wrapper) { m_Wrapper = wrapper; }
         public InputAction @movement => m_Wrapper.m_Player_movement;
+        public InputAction @attack => m_Wrapper.m_Player_attack;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -277,6 +311,9 @@ public partial class @Player_input: IInputActionCollection2, IDisposable
             @movement.started += instance.OnMovement;
             @movement.performed += instance.OnMovement;
             @movement.canceled += instance.OnMovement;
+            @attack.started += instance.OnAttack;
+            @attack.performed += instance.OnAttack;
+            @attack.canceled += instance.OnAttack;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -284,6 +321,9 @@ public partial class @Player_input: IInputActionCollection2, IDisposable
             @movement.started -= instance.OnMovement;
             @movement.performed -= instance.OnMovement;
             @movement.canceled -= instance.OnMovement;
+            @attack.started -= instance.OnAttack;
+            @attack.performed -= instance.OnAttack;
+            @attack.canceled -= instance.OnAttack;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -350,6 +390,7 @@ public partial class @Player_input: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
