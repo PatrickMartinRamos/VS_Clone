@@ -125,6 +125,45 @@
                     "action": "movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "170525d4-32b0-4f92-b7e3-e645bee6e2a4",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "28ff86fc-6029-4532-b86c-d6f0075f2238",
+            "actions": [
+                {
+                    "name": "UItouch",
+                    "type": "Value",
+                    "id": "e613007d-70dd-46fd-8842-35d237e75539",
+                    "expectedControlType": "Touch",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d608b923-db39-4b82-acbf-757de17f8550",
+                    "path": "<Touchscreen>/primaryTouch",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UItouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

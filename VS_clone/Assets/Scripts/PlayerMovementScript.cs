@@ -10,10 +10,12 @@ public class PlayerMovementScript : MonoBehaviour
     private Rigidbody2D rb = null;
     public float moveSpeed;
 
+
     private void Awake()
     {
         input = new Player_input();
         rb = GetComponent<Rigidbody2D>();
+        Application.targetFrameRate = 60;
     }
 
     public void FixedUpdate()
