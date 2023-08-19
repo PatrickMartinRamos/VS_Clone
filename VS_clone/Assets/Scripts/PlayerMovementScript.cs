@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Animations;
 
 public class PlayerMovementScript : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class PlayerMovementScript : MonoBehaviour
     private Vector2 moveVector = Vector2.zero;
     private Rigidbody2D rb = null;
     public float moveSpeed;
+    public Animator charAnim;
+    bool charWalk = false;
+ 
 
 
     private void Awake()
@@ -28,6 +32,7 @@ public class PlayerMovementScript : MonoBehaviour
         input.Enable();
         input.Player.movement.performed += onMovementPerformed;
         input.Player.movement.canceled += onMovementCancel;
+        
     }
 
     private void OnDisable()
@@ -39,11 +44,15 @@ public class PlayerMovementScript : MonoBehaviour
 
     private void onMovementPerformed(InputAction.CallbackContext value)
     {
+        charWalk = true;
+        charAnim.SetBool("Walk", true);
         moveVector = value.ReadValue<Vector2>();
     }
 
     private void onMovementCancel(InputAction.CallbackContext value)
     {
         moveVector = Vector2.zero;
+        charWalk = false;
+        charAnim.SetBool("Walk", false);
     }    
 }
