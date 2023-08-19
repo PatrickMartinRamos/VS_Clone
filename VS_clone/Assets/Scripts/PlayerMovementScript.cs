@@ -6,7 +6,9 @@ using UnityEngine.Animations;
 
 public class PlayerMovementScript : MonoBehaviour
 {
-    private Player_input input = null;
+
+
+    private Player_input input = null; // I'm using unity system input 
     private Vector2 moveVector = Vector2.zero;
     private Rigidbody2D rb = null;
     public float moveSpeed;
@@ -19,7 +21,6 @@ public class PlayerMovementScript : MonoBehaviour
     {
         input = new Player_input();
         rb = GetComponent<Rigidbody2D>();
-        Application.targetFrameRate = 60;
     }
 
     public void FixedUpdate()
