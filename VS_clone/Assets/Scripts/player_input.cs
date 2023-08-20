@@ -40,7 +40,7 @@ public partial class @Player_input: IInputActionCollection2, IDisposable
                     ""name"": ""attack"",
                     ""type"": ""Value"",
                     ""id"": ""256b774c-17d9-4eca-a4ac-a71a41e0e005"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Touch"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -171,18 +171,7 @@ public partial class @Player_input: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d61dd16d-18bb-4108-83c2-5b4b4624ad95"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3f10ccc0-fc39-43bf-a701-db902c16d7d2"",
-                    ""path"": ""<Mouse>/position"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

@@ -12,6 +12,8 @@ public class PlayerMovementScript : MonoBehaviour
     private Vector2 moveVector = Vector2.zero;
     private Rigidbody2D rb = null;
     public float moveSpeed;
+
+    //animator
     public Animator charAnim;
     bool charWalk = false;
  
